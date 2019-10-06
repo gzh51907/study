@@ -1,28 +1,67 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <el-container>
+      <el-header>
+        <el-row>
+          <el-col :span="18">
+            <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" router>
+              <el-menu-item :index="item.path" v-for="item in menus" :key="item.name">{{item.text}}</el-menu-item>
+            </el-menu>
+          </el-col>
+          <el-col :span="6" class="txt-right"></el-col>
+        </el-row>
+      </el-header>
+    </el-container>
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  data() {
+    return {
+      activeIndex: "1",
+      activeIndex2: "1",
+      menus: [
+        {
+          name: "home",
+          path: "/home",
+          text: "首页"
+        },
+        {
+          name: "car",
+          path: "/car",
+          text: "购物车"
+        },
+        {
+          name: "classify",
+          path: "/classify",
+          text: "分类"
+        },
+        {
+          name: "mine",
+          path: "/mine",
+          text: "我的"
+        }
+      ]
+    };
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    created() {
+      //获取url地址参数
+      console.log(this.$router);
+      this.activeIndex = this.$route.path;
+    }
+  },
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  components: {}
+};
+</script>
+<style lang="scss">
+.el-menu-demo {
+  background-color: #fff;
 }
 </style>
