@@ -8,9 +8,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 让所有请求都经过UI框架
 Vue.use(ElementUI)
 
-// import axios from 'axios';
-//将发送网络请求的方法设置vue实例的原型对象上
-// Vue.prototype.$axios = axios;
+import axios from 'axios';
+// 将发送网络请求的方法设置vue实例的原型对象上
+Vue.prototype.$axios = axios;
 
 new Vue({
   router,

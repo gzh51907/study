@@ -9,6 +9,8 @@ import Car from '../pasg/Car.vue'
 import classify from '../pasg/Classify'
 import Mine from '../pasg/Mine.vue'
 import NotFound from "../pasg/NotFund.vue"
+import Login from "../pasg/Login"
+import Register from "../pasg/res"
 //配置路由
 let router = new VueRouter({
     routes: [
@@ -19,7 +21,7 @@ let router = new VueRouter({
             component: Home
         },
         {
-            path: "./",
+            path: "/",
             redirect: "/home"
         }, {
             name: "car",
@@ -39,6 +41,12 @@ let router = new VueRouter({
         }, {
             path: "*",
             redirect: "/404"
+        }, {
+            path: "/login",
+            component: Login
+        }, {
+            path: "/register",
+            component: Register
         }
     ]
 })
